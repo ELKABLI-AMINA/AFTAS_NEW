@@ -82,9 +82,30 @@ public class MemberServiceImpl implements IMemberService {
         }
         return true;
     }
+    public Optional<MemberResponseDto> findByName(String name){
+        log.info("Fetching member by name: {}", name);
+        try{
+            return  membreRepository.findByName(name).
+                    map(member -> modelMapper.map(member, MemberResponseDto.class));
+        }catch(Exception ex){
+            log.error("Unable to fetch member by name {}", ex);
+            throw new DatabaseAccessException("Unable to process request", ex);
+        }
+    }
+    public Optional<MemberResponseDto>findByNumber(int number){
+        log.info("Fetching member by number: {}", number);
+        try{
+            return membreRepository.findByNum(number)
+                    .map(member -> modelMapper.map(member, MemberResponseDto.class));
+        }catch(Exception ex){
+            log.error("Unable to fetch member by number {}", number, ex);
+            throw new DatabaseAccessException("Unable to process request", ex);
+        }
+    }
 
     @Override
     public Optional<MemberResponseDto> findById(Long id) {
         return Optional.empty();
     }
+
 }
