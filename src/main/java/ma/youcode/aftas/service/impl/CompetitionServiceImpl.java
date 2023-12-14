@@ -45,38 +45,20 @@ public class CompetitionServiceImpl implements ICompetitionService {
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yy-MM-dd");
         String dateCode = competition.getStartTime().format(dateFormatter);
         String competitionCode = locationCode + "-" + dateCode;
-       competition.setCode(competitionCode);
-       return competitionRepository.save(competition);
-    }
-
-    @Override
-    public Competition update(Competition competition, Long id) {
-        Competition existingCompetition = competitionRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Compétition introuvable avec l'identifiant " + id));
-
+        competition.setCode(competitionCode);
         return competitionRepository.save(competition);
     }
+
+
+
+
+
 
     @Override
     public Optional<Competition> findByCode(String code) {
         return competitionRepository.findByCode(code);
     }
 
-    @Override
-    public Page<Competition> findAll(Pageable pageable) {
-        return competitionRepository.findAll(pageable);
-    }
 
-    @Override
-    public boolean delete(String code) {
-        Optional<Competition> competitionOptional = competitionRepository.findByCode(code);
-
-        if (competitionOptional.isPresent()) {
-            competitionRepository.delete(competitionOptional.get());
-            return true;
-        } else {
-            return false;
-        }
-    }
 
 }

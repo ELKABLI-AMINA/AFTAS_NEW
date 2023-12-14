@@ -8,8 +8,7 @@ import java.util.Optional;
 
 public interface ICompetitionService {
     Competition save(Competition competition);
-    Competition update(Competition competitionDto, Long id);
+
     Optional<Competition> findByCode(String code);
-    Page<Competition> findAll(Pageable pageable);
-    boolean delete(String code);
+
 }

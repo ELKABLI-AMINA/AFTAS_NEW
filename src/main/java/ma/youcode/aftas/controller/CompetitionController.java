@@ -2,6 +2,7 @@ package ma.youcode.aftas.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import ma.youcode.aftas.dto.CreateUpdateCompetitionDto;
 import ma.youcode.aftas.dto.response.CompetitionResponseDto;
 import ma.youcode.aftas.entity.Competition;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/competitions")
 @RequiredArgsConstructor
-
+@Slf4j
 public class CompetitionController {
     private final ICompetitionService competitionService;
     private final ModelMapper modelMapper;
@@ -29,12 +30,7 @@ public class CompetitionController {
         return new ResponseEntity<>(responseDto, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<CompetitionResponseDto> updateCompetition(@PathVariable Long id, @Validated @RequestBody CreateUpdateCompetitionDto updateCompetitionDto) {
-        Competition updatedCompetition = competitionService.update(modelMapper.map(updateCompetitionDto, Competition.class), id);
-        CompetitionResponseDto responseDto = modelMapper.map(updatedCompetition, CompetitionResponseDto.class);
-        return ResponseEntity.ok(responseDto);
-    }
+
 
     @GetMapping("/{code}")
     public ResponseEntity<CompetitionResponseDto> getCompetitionById(@PathVariable String code) {
@@ -43,19 +39,8 @@ public class CompetitionController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping
-    public ResponseEntity<Page<CompetitionResponseDto>> getAllCompetitions(Pageable pageable) {
-        return ResponseEntity.ok(competitionService.findAll(pageable)
-                .map(competition -> modelMapper.map(competition, CompetitionResponseDto.class)));
-    }
 
-    @DeleteMapping("/{code}")
-    public ResponseEntity<Void> deleteCompetition(@PathVariable String code) {
-        if (competitionService.delete(code)) {
-            return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
+
+
 
 }

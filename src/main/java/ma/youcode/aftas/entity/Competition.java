@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -18,8 +19,8 @@ public class Competition  {
     private long id;
     private String code;
     private Date date;
-    private LocalDate startTime;
-    private LocalDate endTime;
+    private LocalDateTime startTime;
+    private  LocalDateTime endTime;
     private Integer numberOfParticipants;
     private String location;
     private Double amount;
