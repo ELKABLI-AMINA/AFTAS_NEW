@@ -1,12 +1,14 @@
 package ma.youcode.aftas.exception;
 
 import java.time.LocalDateTime;
+import java.util.Map;
 
 public record ErrorResponse(
-        Integer statusCode,
+        String timeStamp,
+        Integer status,
+        String error,
         String message,
-        LocalDateTime timestamp,
-        String errorCode,
         String path
 ) {
+
 }

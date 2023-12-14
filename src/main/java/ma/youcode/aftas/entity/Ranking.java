@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Ranking extends BaseEntity{
+public class Ranking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

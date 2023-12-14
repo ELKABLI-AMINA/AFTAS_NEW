@@ -13,7 +13,7 @@ public class Fish {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
-    private String averageWeight;
+    private Double averageWeight;
     @ManyToOne
     private Level level;
 }

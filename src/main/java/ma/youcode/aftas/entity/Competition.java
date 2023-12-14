@@ -22,7 +22,9 @@ public class Competition  {
     private LocalDate endTime;
     private Integer numberOfParticipants;
     private String location;
-    private String amount;
+    private Double amount;
     @OneToMany(mappedBy = "competition")
     private List<Ranking> rankings;
+    @OneToMany(mappedBy = "competition")
+    private List<Hunting> hangings;
 }

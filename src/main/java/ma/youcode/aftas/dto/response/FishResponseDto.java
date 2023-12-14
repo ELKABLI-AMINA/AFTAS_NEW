@@ -1,10 +1,18 @@
 package ma.youcode.aftas.dto.response;
 
-public record FishResponseDto(
-        Long id,
-        int num,
-        String name,
-        double averageWeight,
-        LevelResponseDto level
-) {
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor @NoArgsConstructor
+public class FishResponseDto {
+    private Long id;
+    private int num;
+    private String name;
+    private double averageWeight;
+    private LevelResponseDto level;
+
+
+
 }

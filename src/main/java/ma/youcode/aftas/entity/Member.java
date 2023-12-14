@@ -15,7 +15,6 @@ import java.util.List;
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     private Integer num;
     private String name;
     private String familyName;
@@ -26,5 +25,6 @@ public class Member {
     private String identityNumber;
     @OneToMany(mappedBy = "member")
     private List<Ranking> rankings;
+
 
 }
