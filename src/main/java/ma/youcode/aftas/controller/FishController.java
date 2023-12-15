@@ -3,7 +3,7 @@ package ma.youcode.aftas.controller;
 import lombok.RequiredArgsConstructor;
 import ma.youcode.aftas.dto.CreateUpdateFishDto;
 import ma.youcode.aftas.dto.response.FishResponseDto;
-import ma.youcode.aftas.entity.Fish;
+import ma.youcode.aftas.entities.Fish;
 import ma.youcode.aftas.service.IFishService;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/fish")
 @RequiredArgsConstructor
+@CrossOrigin("*")
 public class FishController {
     private final IFishService fishService;
     private final ModelMapper modelMapper;

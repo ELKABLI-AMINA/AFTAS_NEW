@@ -1,19 +1,19 @@
-package ma.youcode.aftas.entity;
+package ma.youcode.aftas.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@AllArgsConstructor @NoArgsConstructor
+@Data @AllArgsConstructor @NoArgsConstructor
 @Entity
-public class Fish {
+public class Level {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String name;
-    private Double averageWeight;
-    @ManyToOne
-    private Level level;
+    private Integer code;
+    private String description;
+    private Integer points;
+
+
 }

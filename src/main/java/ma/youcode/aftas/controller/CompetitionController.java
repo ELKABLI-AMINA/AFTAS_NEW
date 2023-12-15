@@ -5,14 +5,11 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import ma.youcode.aftas.dto.CreateUpdateCompetitionDto;
 import ma.youcode.aftas.dto.response.CompetitionResponseDto;
-import ma.youcode.aftas.entity.Competition;
+import ma.youcode.aftas.entities.Competition;
 import ma.youcode.aftas.service.ICompetitionService;
 import org.modelmapper.ModelMapper;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -22,15 +19,6 @@ import org.springframework.web.bind.annotation.*;
 public class CompetitionController {
     private final ICompetitionService competitionService;
     private final ModelMapper modelMapper;
-
-
-
-//    @PostMapping
-//    public ResponseEntity<CompetitionResponseDto> createCompetition(@Valid @RequestBody CreateUpdateCompetitionDto createCompetitionDto) {
-//        return ResponseEntity.ok(modelMapper.map(createCompetitionDto ,CompetitionResponseDto.class ));
-//    }
-
-
 
     @PostMapping
     public ResponseEntity<CompetitionResponseDto> createCompetition(@Valid @RequestBody CreateUpdateCompetitionDto createCompetitionDto) {

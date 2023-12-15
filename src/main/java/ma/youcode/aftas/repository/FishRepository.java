@@ -1,6 +1,6 @@
 package ma.youcode.aftas.repository;
 
-import ma.youcode.aftas.entity.Fish;
+import ma.youcode.aftas.entities.Fish;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

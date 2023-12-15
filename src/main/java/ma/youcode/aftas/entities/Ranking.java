@@ -1,4 +1,4 @@
-package ma.youcode.aftas.entity;
+package ma.youcode.aftas.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

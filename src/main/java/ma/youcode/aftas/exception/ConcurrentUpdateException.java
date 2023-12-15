@@ -5,7 +5,5 @@ public class ConcurrentUpdateException extends RuntimeException {
         super(message);
     }
 
-    public ConcurrentUpdateException(String message, Throwable cause) {
-        super(message, cause);
-    }
+
 }

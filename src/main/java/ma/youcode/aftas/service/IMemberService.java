@@ -1,7 +1,6 @@
 package ma.youcode.aftas.service;
 
-import ma.youcode.aftas.entity.Member;
-import ma.youcode.aftas.exception.ResourceNotFoundException;
+import ma.youcode.aftas.entities.Member;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

@@ -3,7 +3,7 @@ package ma.youcode.aftas.controller;
 import lombok.RequiredArgsConstructor;
 import ma.youcode.aftas.dto.CreateUpdateMemberDto;
 import ma.youcode.aftas.dto.response.MemberResponseDto;
-import ma.youcode.aftas.entity.Member;
+import ma.youcode.aftas.entities.Member;
 import ma.youcode.aftas.service.IMemberService;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/members")
 @RequiredArgsConstructor
+@CrossOrigin("*")
 public class MemberController {
     private final IMemberService memberService;
     private final ModelMapper modelMapper;

@@ -1,6 +1,6 @@
 package ma.youcode.aftas.service;
 
-import ma.youcode.aftas.entity.Fish;
+import ma.youcode.aftas.entities.Fish;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

@@ -1,8 +1,6 @@
 package ma.youcode.aftas.service;
 
-import ma.youcode.aftas.entity.Competition;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import ma.youcode.aftas.entities.Competition;
 
 import java.util.Optional;
 

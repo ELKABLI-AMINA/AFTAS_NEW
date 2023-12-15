@@ -5,7 +5,5 @@ public class DatabaseAccessException extends RuntimeException{
         super(message);
     }
 
-    public DatabaseAccessException(String message, Throwable cause) {
-        super(message, cause);
-    }
+
 }

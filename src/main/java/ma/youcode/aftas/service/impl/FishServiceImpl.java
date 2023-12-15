@@ -1,7 +1,7 @@
 package ma.youcode.aftas.service.impl;
 
 import lombok.RequiredArgsConstructor;
-import ma.youcode.aftas.entity.Fish;
+import ma.youcode.aftas.entities.Fish;
 import ma.youcode.aftas.repository.FishRepository;
 import ma.youcode.aftas.service.IFishService;
 import org.springframework.data.domain.Page;
