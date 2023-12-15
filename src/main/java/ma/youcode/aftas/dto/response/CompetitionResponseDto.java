@@ -1,26 +1,31 @@
 package ma.youcode.aftas.dto.response;
 
-import jakarta.validation.constraints.FutureOrPresent;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Date;
 
+@Data
+@Component
+@AllArgsConstructor
+@NoArgsConstructor
 public final class CompetitionResponseDto {
     Long id;
     String code;
 
     Date date;
-    LocalDateTime startTime;
-    LocalDateTime endTime;
+
+    LocalTime  startTime;
+
+    LocalTime  endTime;
 
     Integer numberOfParticipants;
 
     String location;
 
     Double amount;
+
 }

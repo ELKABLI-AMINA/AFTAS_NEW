@@ -23,6 +23,15 @@ public class CompetitionController {
     private final ICompetitionService competitionService;
     private final ModelMapper modelMapper;
 
+
+
+//    @PostMapping
+//    public ResponseEntity<CompetitionResponseDto> createCompetition(@Valid @RequestBody CreateUpdateCompetitionDto createCompetitionDto) {
+//        return ResponseEntity.ok(modelMapper.map(createCompetitionDto ,CompetitionResponseDto.class ));
+//    }
+
+
+
     @PostMapping
     public ResponseEntity<CompetitionResponseDto> createCompetition(@Valid @RequestBody CreateUpdateCompetitionDto createCompetitionDto) {
         Competition createdCompetition = competitionService.save(modelMapper.map(createCompetitionDto, Competition.class));

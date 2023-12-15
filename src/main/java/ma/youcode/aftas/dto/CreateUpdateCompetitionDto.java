@@ -1,9 +1,6 @@
 package ma.youcode.aftas.dto;
 
-import jakarta.validation.constraints.FutureOrPresent;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,43 +13,42 @@ import java.util.Date;
 
 @Data
 @Component
-
+@AllArgsConstructor
 @NoArgsConstructor
 public class CreateUpdateCompetitionDto {
-    @NotNull
+    @NotBlank(message = "Code is required")
+    @Size(max = 255, message = "Code should not exceed 255 characters")
     String code;
 
-    @NotNull
-    @FutureOrPresent
+    @NotNull(message = "Date is required")
+    @Future(message = "Date should be in the future")
     Date date;
 
-    LocalDateTime  startTime;
-    LocalDateTime  endTime;
+    @NotNull(message = "Start time is required")
+    @FutureOrPresent(message = "Start time should be in the present or future")
+    LocalTime  startTime;
 
-    @Min(1)
+    @NotNull(message = "End time is required")
+    @FutureOrPresent(message = "End time should be in the present or future")
+    LocalTime  endTime;
+
+    @NotNull(message = "Number of participants is required")
+    @Min(value = 1, message = "Number of participants should be at least 1")
     Integer numberOfParticipants;
 
-    @NotBlank
+    @NotBlank(message = "Location is required")
+    @Size(max = 255, message = "Location should not exceed 255 characters")
     String location;
 
-    @Min(0)
+    @NotNull(message = "Amount is required")
+    @Positive(message = "Amount should be positive")
     Double amount;
-    public CreateUpdateCompetitionDto(String code, Date date, LocalDateTime startTime, LocalDateTime endTime, Integer numberOfParticipants, String location, Double amount) {
-        this.code = code;
-        this.date = date;
-        this.startTime = (startTime != null) ? startTime : LocalDateTime.now();
+    @AssertTrue(message = "End time should be greater than Start time")
+    public boolean isEndTimeAfterStartTime() {
+        return endTime.isAfter(startTime);
 
-        // Vérifier si endTime est nul, sinon initialiser à une valeur par défaut
-        if (endTime != null && this.startTime.isAfter(endTime)) {
-            throw new IllegalArgumentException("L'heure de début doit être avant l'heure de fin");
-        }
 
-        this.endTime = (endTime != null) ? endTime : this.startTime.plusHours(1);
-        this.numberOfParticipants = numberOfParticipants;
-        this.location = location;
-        this.amount = amount;
     }
-
 }
 
 

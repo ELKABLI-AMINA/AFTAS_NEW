@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 @Configuration
@@ -20,24 +21,10 @@ public class ModelMapperConfig {
                 .setSkipNullEnabled(true)
                 .setMatchingStrategy(MatchingStrategies.STRICT);
 
-        modelMapper.createTypeMap(CreateUpdateCompetitionDto.class, Competition.class)
-                .addMappings(mapper -> {
-                    mapper.using(ctx -> convertToLocalDateTime(ctx.getSource())).map(CreateUpdateCompetitionDto::getStartTime, Competition::setStartTime);
-                    mapper.using(ctx -> convertToLocalDateTime(ctx.getSource())).map(CreateUpdateCompetitionDto::getEndTime, Competition::setEndTime);
-                });
 
         return modelMapper;
     }
 
-    private LocalDateTime convertToLocalDateTime(Object source) {
-        if (source instanceof String) {
-            try {
-                return LocalDateTime.parse((String) source);
-            } catch (DateTimeParseException e) {
-                // Handle parsing errors
-                return null;
-            }
-        }
-        return null;
-    }
+
+
 }
