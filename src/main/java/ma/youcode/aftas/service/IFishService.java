@@ -14,4 +14,5 @@ public interface IFishService {
     void delete(Long id);
 
     Optional<Fish> findByName(String name);
+    Fish getFishById(Long id);
 }

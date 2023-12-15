@@ -3,6 +3,7 @@ package ma.youcode.aftas.service.impl;
 import lombok.RequiredArgsConstructor;
 import ma.youcode.aftas.entities.Fish;
 import ma.youcode.aftas.exception.ResourceAlreadyExistsException;
+import ma.youcode.aftas.exception.ResourceNotFoundException;
 import ma.youcode.aftas.repository.FishRepository;
 import ma.youcode.aftas.service.IFishService;
 import org.springframework.data.domain.Page;
@@ -45,4 +46,11 @@ public class FishServiceImpl implements IFishService {
 
         return fishRepository.findByName(name);
     }
+
+    @Override
+    public Fish getFishById(Long id) {
+        return fishRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Fish id " + id + " not found"));
+    }
+
+
 }

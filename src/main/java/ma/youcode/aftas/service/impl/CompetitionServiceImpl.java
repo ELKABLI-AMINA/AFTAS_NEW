@@ -2,6 +2,7 @@ package ma.youcode.aftas.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import ma.youcode.aftas.entities.Competition;
+import ma.youcode.aftas.exception.ResourceNotFoundException;
 import ma.youcode.aftas.repository.CompetitionRepository;
 import ma.youcode.aftas.service.ICompetitionService;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,12 @@ public class CompetitionServiceImpl implements ICompetitionService {
         return competitionRepository.save(competition);
 
 
+    }
+
+    @Override
+    public Competition getCompetitionById(Long id) {
+        return competitionRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Competition id " + id + " not found"));
     }
 
 

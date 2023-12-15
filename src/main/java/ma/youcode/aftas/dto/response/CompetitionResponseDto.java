@@ -12,7 +12,7 @@ import java.util.Date;
 @Component
 @AllArgsConstructor
 @NoArgsConstructor
-public final class CompetitionResponseDto {
+public class CompetitionResponseDto {
     Long id;
     String code;
 
