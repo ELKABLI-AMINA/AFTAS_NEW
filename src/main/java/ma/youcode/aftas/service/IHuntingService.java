@@ -1,6 +1,6 @@
 package ma.youcode.aftas.service;
 
-import ma.youcode.aftas.entities.Hunting;
+import ma.youcode.aftas.model.Hunting;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package ma.youcode.aftas.repository;
 
-import ma.youcode.aftas.entities.Member;
+import ma.youcode.aftas.model.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

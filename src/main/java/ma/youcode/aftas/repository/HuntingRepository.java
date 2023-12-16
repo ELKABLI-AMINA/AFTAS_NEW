@@ -1,6 +1,6 @@
 package ma.youcode.aftas.repository;
 
-import ma.youcode.aftas.entities.Hunting;
+import ma.youcode.aftas.model.Hunting;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

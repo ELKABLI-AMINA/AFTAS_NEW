@@ -8,8 +8,8 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ma.youcode.aftas.entities.Competition;
-import ma.youcode.aftas.entities.Member;
+import ma.youcode.aftas.model.Competition;
+import ma.youcode.aftas.model.Member;
 import org.springframework.stereotype.Component;
 
 
@@ -18,18 +18,15 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 @NoArgsConstructor
 public final class CreateUpdateRankingDto {
-    @NotNull(message = "Rank cannot be null") @Min(value = 1, message = "Rank must be at least 1")
-    private  Integer rank;
-    @NotNull(message = "Score cannot be null") @Min(value = 0, message = "Score must be at least 0") @Max(value = 100, message = "Score must be at most 100")
-    private   Integer score;
+
     @ManyToOne
     @JoinColumn(name = "member_id")
     @NotNull(message = "Member cannot be null")
-    private  Member member;
+    private  Integer memberNum;
     @ManyToOne
     @JoinColumn(name = "competition_id")
     @NotNull(message = "Competition cannot be null")
-    private  Competition competition;
+    private  String competitionCode;
 
 
 

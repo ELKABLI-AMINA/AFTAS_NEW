@@ -1,6 +1,6 @@
 package ma.youcode.aftas.repository;
 
-import ma.youcode.aftas.entities.Competition;
+import ma.youcode.aftas.model.Competition;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

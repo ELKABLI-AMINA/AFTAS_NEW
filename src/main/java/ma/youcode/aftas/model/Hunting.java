@@ -1,14 +1,16 @@
-package ma.youcode.aftas.entities;
+package ma.youcode.aftas.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 @Data
 @AllArgsConstructor @NoArgsConstructor
 @Entity
-public class Hunting {
+public class Hunting  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

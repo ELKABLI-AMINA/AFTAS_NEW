@@ -1,7 +1,7 @@
 package ma.youcode.aftas.service.impl;
 
 import lombok.RequiredArgsConstructor;
-import ma.youcode.aftas.entities.Member;
+import ma.youcode.aftas.model.Member;
 import ma.youcode.aftas.exception.ConcurrentUpdateException;
 import ma.youcode.aftas.exception.ResourceAlreadyExistsException;
 import ma.youcode.aftas.exception.ResourceNotFoundException;

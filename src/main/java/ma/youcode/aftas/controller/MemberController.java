@@ -3,7 +3,7 @@ package ma.youcode.aftas.controller;
 import lombok.RequiredArgsConstructor;
 import ma.youcode.aftas.dto.CreateUpdateMemberDto;
 import ma.youcode.aftas.dto.response.MemberResponseDto;
-import ma.youcode.aftas.entities.Member;
+import ma.youcode.aftas.model.Member;
 import ma.youcode.aftas.service.IMemberService;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;

@@ -1,10 +1,10 @@
 package ma.youcode.aftas.service.impl;
 
 import lombok.RequiredArgsConstructor;
-import ma.youcode.aftas.entities.Competition;
-import ma.youcode.aftas.entities.Fish;
-import ma.youcode.aftas.entities.Hunting;
-import ma.youcode.aftas.entities.Member;
+import ma.youcode.aftas.model.Competition;
+import ma.youcode.aftas.model.Fish;
+import ma.youcode.aftas.model.Hunting;
+import ma.youcode.aftas.model.Member;
 import ma.youcode.aftas.exception.ResourceNotFoundException;
 import ma.youcode.aftas.repository.HuntingRepository;
 import ma.youcode.aftas.service.IHuntingService;
@@ -36,6 +36,7 @@ public class HuntingServiceImpl implements IHuntingService {
         Competition competition = competitionService.getCompetitionById(competionId);
         Optional < Member> member= memberService.findByNum(memberNum);
         Fish fish =fishService.getFishById(fishId);
+        return null;
 
 
     }

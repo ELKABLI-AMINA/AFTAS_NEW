@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import ma.youcode.aftas.dto.CreateUpdateCompetitionDto;
 import ma.youcode.aftas.dto.response.CompetitionResponseDto;
-import ma.youcode.aftas.entities.Competition;
+import ma.youcode.aftas.model.Competition;
 import ma.youcode.aftas.service.ICompetitionService;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;

@@ -1,4 +1,4 @@
-package ma.youcode.aftas.entities;
+package ma.youcode.aftas.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -21,4 +21,11 @@ public class Ranking {
     @ManyToOne
     @JoinColumn(name = "competition_id")
     private Competition competition;
+
+    public Ranking(Integer rank, Integer score, Member member, Competition competition) {
+        this.rank = rank;
+        this.score = score;
+        this.member = member;
+        this.competition = competition;
+    }
 }

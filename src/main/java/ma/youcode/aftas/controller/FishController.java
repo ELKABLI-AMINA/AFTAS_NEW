@@ -3,7 +3,7 @@ package ma.youcode.aftas.controller;
 import lombok.RequiredArgsConstructor;
 import ma.youcode.aftas.dto.CreateUpdateFishDto;
 import ma.youcode.aftas.dto.response.FishResponseDto;
-import ma.youcode.aftas.entities.Fish;
+import ma.youcode.aftas.model.Fish;
 import ma.youcode.aftas.service.IFishService;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;

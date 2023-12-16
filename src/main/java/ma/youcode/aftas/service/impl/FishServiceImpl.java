@@ -1,7 +1,7 @@
 package ma.youcode.aftas.service.impl;
 
 import lombok.RequiredArgsConstructor;
-import ma.youcode.aftas.entities.Fish;
+import ma.youcode.aftas.model.Fish;
 import ma.youcode.aftas.exception.ResourceAlreadyExistsException;
 import ma.youcode.aftas.exception.ResourceNotFoundException;
 import ma.youcode.aftas.repository.FishRepository;

@@ -1,6 +1,6 @@
 package ma.youcode.aftas.service;
 
-import ma.youcode.aftas.entities.Competition;
+import ma.youcode.aftas.model.Competition;
 
 import java.util.Optional;
 

@@ -1,6 +1,6 @@
 package ma.youcode.aftas.service;
 
-import ma.youcode.aftas.entities.Member;
+import ma.youcode.aftas.model.Member;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

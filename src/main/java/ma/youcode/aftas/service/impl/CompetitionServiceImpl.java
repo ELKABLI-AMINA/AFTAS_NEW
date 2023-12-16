@@ -1,7 +1,7 @@
 package ma.youcode.aftas.service.impl;
 
 import lombok.RequiredArgsConstructor;
-import ma.youcode.aftas.entities.Competition;
+import ma.youcode.aftas.model.Competition;
 import ma.youcode.aftas.exception.ResourceNotFoundException;
 import ma.youcode.aftas.repository.CompetitionRepository;
 import ma.youcode.aftas.service.ICompetitionService;
