@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 @NoArgsConstructor
 public final class RankingResponseDto {
-    long id;
+    private long id;
      CompetitionResponseDto competition;
      MemberResponseDto member;
      Integer rank;

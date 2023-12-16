@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor @NoArgsConstructor
 public class LevelResponseDto {
      long id;
-    private Integer code;
-    private String description;
-    private Integer points;
+     Integer code;
+     String description;
+     Integer points;
 
 
 }

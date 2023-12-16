@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import ma.youcode.aftas.enums.IdentityDocumentType;
+import org.springframework.data.elasticsearch.annotations.Document;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -13,6 +14,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor @NoArgsConstructor
 @Entity
+
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

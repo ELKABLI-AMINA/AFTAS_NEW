@@ -16,7 +16,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/members")
+@RequestMapping("/api/ranking")
 @RequiredArgsConstructor
 @CrossOrigin("*")
 public class RankingController {
@@ -28,6 +28,7 @@ public class RankingController {
         RankingResponseDto responseDto = modelMapper.map(createdRanking, RankingResponseDto.class);
         return new ResponseEntity<>(responseDto, HttpStatus.CREATED);
     }
+
 
 
 

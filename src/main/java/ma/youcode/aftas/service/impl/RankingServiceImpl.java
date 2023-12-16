@@ -43,12 +43,7 @@ public class RankingServiceImpl implements IRankingService {
 
     }
 
-    @Override
-    public Ranking getRankingById(Long id)
-    {
-        return rankingRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Ranking id " + id + " not found"));
-    }
+
 
 //    @Override
 //    public Ranking updateRanking(Ranking ranking, Long id) {
