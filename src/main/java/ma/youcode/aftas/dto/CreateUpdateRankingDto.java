@@ -1,5 +1,6 @@
 package ma.youcode.aftas.dto;
 
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.Max;
@@ -18,7 +19,7 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 @NoArgsConstructor
 public final class CreateUpdateRankingDto {
-
+    private Long id;
     @ManyToOne
     @JoinColumn(name = "member_id")
     @NotNull(message = "Member cannot be null")

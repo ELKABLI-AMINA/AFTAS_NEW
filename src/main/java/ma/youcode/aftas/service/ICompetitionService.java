@@ -8,5 +8,6 @@ public interface ICompetitionService {
     Competition save(Competition competition);
     Competition getCompetitionById(Long id);
     Optional<Competition> findByCode(String code);
+    Optional<Competition> findById(Long id);
 
 }

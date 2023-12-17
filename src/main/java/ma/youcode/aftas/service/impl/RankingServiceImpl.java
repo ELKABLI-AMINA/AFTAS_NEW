@@ -25,11 +25,12 @@ public class RankingServiceImpl implements IRankingService {
        if(foundMemberOptional.isEmpty()){
            throw  new InvalidDataException("this member doesn't exist added it first");
        }else{
-           Optional<Competition> foundCompetition= competitionService.findByCode(rankingDto.getCompetitionCode());
+           Optional<Competition> foundCompetition= competitionService.findById(rankingDto.getId());
            if(foundCompetition.isEmpty()){
                throw  new InvalidDataException("this competition doesn't exist added it first");
            }else{
                Optional<Ranking> foundRanking =rankingRepository.findByMemberAndCompetition(foundMemberOptional.get(),foundCompetition.get());
+               System.out.println(foundRanking.isPresent());
                if(foundRanking.isPresent()){
                    throw new ResourceAlreadyExistsException("this member is already in this competition");
                }else{

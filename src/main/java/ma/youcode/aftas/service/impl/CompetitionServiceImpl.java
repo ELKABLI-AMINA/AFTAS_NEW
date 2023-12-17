@@ -35,5 +35,10 @@ public class CompetitionServiceImpl implements ICompetitionService {
         return competitionRepository.findByCode(code);
     }
 
+    @Override
+    public Optional<Competition> findById(Long id){
+        return competitionRepository.findById(id);
+    }
+
 
 }
