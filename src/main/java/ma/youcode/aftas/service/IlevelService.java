@@ -8,11 +8,9 @@ import java.util.Optional;
 
 public interface IlevelService {
 
-
     Level create(Level level);
     void deleteLevelById(Long id);
     Level findLevelById(Long id);
-    List<Level> getAllLevels(Pageable pageable);
     Boolean existsById(Long id);
 
 }

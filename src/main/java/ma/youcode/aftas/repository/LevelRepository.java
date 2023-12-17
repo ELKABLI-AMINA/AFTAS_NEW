@@ -8,10 +8,7 @@ import java.util.List;
 import java.util.Optional;
 @Repository
 public interface LevelRepository extends JpaRepository<Level, Long> {
-
-
-
-    List<Level> findAllByOrderByPointsAsc();
+    public Optional<Level> findByCode(Integer code);
 
 
 }

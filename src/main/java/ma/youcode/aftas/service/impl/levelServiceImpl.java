@@ -1,6 +1,7 @@
 package ma.youcode.aftas.service.impl;
 
 import lombok.RequiredArgsConstructor;
+import ma.youcode.aftas.exception.ResourceAlreadyExistsException;
 import ma.youcode.aftas.exception.ResourceNotFoundException;
 import ma.youcode.aftas.model.Level;
 import ma.youcode.aftas.repository.LevelRepository;
@@ -19,16 +20,15 @@ public class levelServiceImpl implements IlevelService {
 
     @Override
     public Level create(Level level) {
-        level = levelRepository.save(level);
-        return setCodeForAllLevels(level);
+        canAddLevel(level);
+        return levelRepository.save(level);
     }
 
     @Override
     public void deleteLevelById(Long id) {
-        if(existsById(id)){
+        if (existsById(id)) {
             levelRepository.deleteById(id);
-            setCodeForAllLevels(null);
-        }else {
+        } else {
             throw new ResourceNotFoundException("Level does not exist");
         }
 
@@ -36,29 +36,23 @@ public class levelServiceImpl implements IlevelService {
 
     @Override
     public Level findLevelById(Long id) {
-        return null;
-    }
-
-    @Override
-    public List<Level> getAllLevels(Pageable pageable) {
-        return null;
+        return levelRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Level not found with id: " + id));
     }
 
     @Override
     public Boolean existsById(Long id) {
         return levelRepository.existsById(id);
     }
-    public Level setCodeForAllLevels(Level level){
-        List<Level> levels = levelRepository.findAllByOrderByPointsAsc();
 
-        for(Integer i=0;i<levels.size();i++){
-            levels.get(i).setCode(i+1);
-
+    private void canAddLevel(Level level) {
+        if (levelRepository.findByCode(level.getCode()).isPresent()) {
+            throw new ResourceAlreadyExistsException("Level already exists with this code: " + level.getCode());
         }
-        levelRepository.saveAll(levels);
-        if(level==null){
-            return null;
+        List<Level> existingLevels = levelRepository.findAll();
+        if (existingLevels.stream().allMatch(l -> l.getPoints() < level.getPoints())) {
+        } else {
+            throw new IllegalArgumentException(" new level cannot be created with points less than or equal to an existing level");
         }
-        return findLevelById(level.getId());
     }
 }
