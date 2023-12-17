@@ -19,52 +19,31 @@ public class RankingServiceImpl implements IRankingService {
     private final RankingRepository rankingRepository;
     private final MemberServiceImpl memberService;
     private final CompetitionServiceImpl competitionService;
+
     @Override
     public Ranking save(CreateUpdateRankingDto rankingDto) {
-       Optional<Member> foundMemberOptional=  memberService.findByNum(rankingDto.getMemberNum());
-       if(foundMemberOptional.isEmpty()){
-           throw  new InvalidDataException("this member doesn't exist added it first");
-       }else{
-           Optional<Competition> foundCompetition= competitionService.findById(rankingDto.getId());
-           if(foundCompetition.isEmpty()){
-               throw  new InvalidDataException("this competition doesn't exist added it first");
-           }else{
-               Optional<Ranking> foundRanking =rankingRepository.findByMemberAndCompetition(foundMemberOptional.get(),foundCompetition.get());
-               System.out.println(foundRanking.isPresent());
-               if(foundRanking.isPresent()){
-                   throw new ResourceAlreadyExistsException("this member is already in this competition");
-               }else{
-                   Ranking addedRanking=new Ranking(0,0,foundMemberOptional.get(),foundCompetition.get());
-                   return rankingRepository.save(addedRanking);
-               }
+        Optional<Member> foundMemberOptional = memberService.findByNum(rankingDto.getMemberNum());
+        if (foundMemberOptional.isEmpty()) {
+            throw new InvalidDataException("this member doesn't exist added it first");
+        } else {
+            Optional<Competition> foundCompetition = competitionService.findById(rankingDto.getId());
+            if (foundCompetition.isEmpty()) {
+                throw new InvalidDataException("this competition doesn't exist added it first");
+            } else {
+                Optional<Ranking> foundRanking = rankingRepository.findByMemberAndCompetition(foundMemberOptional.get(), foundCompetition.get());
+                System.out.println(foundRanking.isPresent());
+                if (foundRanking.isPresent()) {
+                    throw new ResourceAlreadyExistsException("this member is already in this competition");
+                } else {
+                    Ranking addedRanking = new Ranking(0, 0, foundMemberOptional.get(), foundCompetition.get());
+                    return rankingRepository.save(addedRanking);
+                }
 
-           }
+            }
 
-       }
+        }
 
     }
 
 
-
-//    @Override
-//    public Ranking updateRanking(Ranking ranking, Long id) {
-//        Ranking existingRanking = getRankingById(id);
-//        existingRanking.setRank((ranking.getRank()));
-//        existingRanking.setScore(ranking.getScore());
-//        return rankingRepository.save(existingRanking);
-//    }
-//
-//    @Override
-//    public Ranking updateRankingScore(Ranking ranking, Long id) {
-//        Ranking existingRanking = getRankingById(id);
-//        existingRanking.setScore(ranking.getScore()+existingRanking.getScore());
-//        return rankingRepository.save(existingRanking);
-//    }
-//
-//    @Override
-//    public void deleteRanking(Long id) {
-//        getRankingById(id);
-//        rankingRepository.deleteById(id);
-//
-//    }
 }

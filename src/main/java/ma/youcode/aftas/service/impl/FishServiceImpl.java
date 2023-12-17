@@ -48,9 +48,11 @@ public class FishServiceImpl implements IFishService {
     }
 
     @Override
-    public Fish getFishById(Long id) {
-        return fishRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Fish id " + id + " not found"));
+    public Optional<Fish> findById(Long id) {
+        return fishRepository.findById(id);
     }
+
+
 
 
 }

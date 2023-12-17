@@ -12,4 +12,5 @@ public interface IMemberService {
     Page<Member> findAll(Pageable pageable);
     boolean delete(Integer num);
     Optional<Member> findByNum(Integer num);
+
 }

@@ -51,7 +51,11 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> handleInvalidDataException(InvalidDataException ex, WebRequest request) {
         return buildErrorResponse(HttpStatus.BAD_REQUEST, ex, "INVALID_DATA", request);
     }
-
+    @ExceptionHandler(FishWeightException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<ErrorResponse> handleInvalidDataException(FishWeightException ex, WebRequest request) {
+        return buildErrorResponse(HttpStatus.BAD_REQUEST, ex, "INVALID_DATA", request);
+    }
 
 
     private ResponseEntity<ErrorResponse> buildErrorResponse(HttpStatus status, Exception ex, String errorCode, WebRequest request) {
