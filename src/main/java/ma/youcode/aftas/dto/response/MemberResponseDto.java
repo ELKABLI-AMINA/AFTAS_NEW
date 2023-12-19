@@ -7,7 +7,6 @@ import java.util.Date;
 
 @Data
 public class MemberResponseDto {
-    private Long id;
     private int num;
     private String name;
     private String familyName;

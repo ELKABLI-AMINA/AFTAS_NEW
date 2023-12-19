@@ -11,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -40,9 +41,9 @@ public class MemberServiceImpl implements IMemberService {
     }
 
     @Override
-    public Page<Member> findAll(Pageable pageable)
+    public List<Member> findAll(Pageable pageable)
     {
-        return membreRepository.findAll(pageable);
+        return membreRepository.findAll(pageable).getContent();
     }
 
     @Override

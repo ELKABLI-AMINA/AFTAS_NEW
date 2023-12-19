@@ -7,6 +7,7 @@ import ma.youcode.aftas.model.Level;
 import ma.youcode.aftas.repository.LevelRepository;
 import ma.youcode.aftas.service.IlevelService;
 import org.springframework.data.annotation.AccessType;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -43,6 +44,11 @@ public class levelServiceImpl implements IlevelService {
     @Override
     public Boolean existsById(Long id) {
         return levelRepository.existsById(id);
+    }
+
+    @Override
+    public Page<Level> findAll(Pageable pageable) {
+        return levelRepository.findAll(pageable);
     }
 
     private void canAddLevel(Level level) {

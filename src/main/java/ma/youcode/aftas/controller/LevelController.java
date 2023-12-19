@@ -3,6 +3,7 @@ package ma.youcode.aftas.controller;
 import lombok.RequiredArgsConstructor;
 import ma.youcode.aftas.dto.CreateUpdateLevelDto;
 import ma.youcode.aftas.dto.response.LevelResponseDto;
+import ma.youcode.aftas.dto.response.MemberResponseDto;
 import ma.youcode.aftas.model.Level;
 import ma.youcode.aftas.service.IlevelService;
 import org.modelmapper.ModelMapper;
@@ -41,6 +42,12 @@ public class LevelController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping
+    public ResponseEntity<Page<LevelResponseDto>> getAlllevels(Pageable pageable) {
+        return ResponseEntity.ok(levelService.findAll(pageable)
+                .map(level-> modelMapper.map(level, LevelResponseDto.class)));
     }
 
 

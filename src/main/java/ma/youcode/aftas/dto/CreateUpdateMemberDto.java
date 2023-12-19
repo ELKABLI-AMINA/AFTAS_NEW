@@ -8,8 +8,7 @@ import java.util.Date;
 
 @Data
 public class CreateUpdateMemberDto {
-    @NotNull(message = "Num cannot be null")
-    private Integer num;
+
     @NotBlank(message = "Name cannot be blank")
     private String name;
     @NotBlank(message = "FamilyName cannot be blank")

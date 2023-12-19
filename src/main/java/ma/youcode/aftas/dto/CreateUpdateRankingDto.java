@@ -20,12 +20,9 @@ import org.springframework.stereotype.Component;
 @NoArgsConstructor
 public final class CreateUpdateRankingDto {
     private Long id;
-    @ManyToOne
-    @JoinColumn(name = "member_id")
     @NotNull(message = "Member cannot be null")
     private  Integer memberNum;
-    @ManyToOne
-    @JoinColumn(name = "competition_id")
+
     @NotNull(message = "Competition cannot be null")
     private  String competitionCode;
 

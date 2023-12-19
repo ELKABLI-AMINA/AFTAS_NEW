@@ -13,6 +13,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RestController
 @RequestMapping("/api/members")
 @RequiredArgsConstructor
@@ -43,9 +46,10 @@ public class MemberController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<MemberResponseDto>> getAllMembers(Pageable pageable) {
+    public ResponseEntity<List<MemberResponseDto>> getAllMembers(Pageable pageable) {
         return ResponseEntity.ok(memberService.findAll(pageable)
-                .map(member -> modelMapper.map(member, MemberResponseDto.class)));
+                .stream()
+                .map(member -> modelMapper.map(member, MemberResponseDto.class)).collect(Collectors.toList()));
     }
 
     @DeleteMapping("/{num}")
