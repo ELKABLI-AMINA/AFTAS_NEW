@@ -12,12 +12,14 @@ public class CreateUpdateHuntingDto {
     private Integer numberOfFish;
 
     @NotNull(message = "Competition ID is required")
-    private Long competitionId;
+    private String competitionCode;
 
     @NotNull(message = "Fish ID is required")
     private Long fishId;
 
     @NotNull(message = "Member ID is required")
     private Integer memberNum;
+    @NotNull(message = "Weight is required")
+    private Double weight;
 
 }

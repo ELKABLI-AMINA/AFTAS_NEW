@@ -8,8 +8,8 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 public interface IHuntingService {
-    Hunting save(CreateUpdateHuntingDto huntingDTO);
 
-
-
+    Hunting createHunting(CreateUpdateHuntingDto hunting);
+    Boolean existsHuntingByMemberNumberAndFishIdAndCompetitionCode(Integer memberNumber, Long fishId, String competitionCode);
+    Hunting findHuntingByMemberNumberAndFishIdAndCompetitionCode(Integer memberNumber, Long fishId, String competitionCode);
 }

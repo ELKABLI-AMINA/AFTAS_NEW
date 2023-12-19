@@ -13,6 +13,11 @@ import java.util.Optional;
 
 @Repository
 public interface HuntingRepository extends JpaRepository<Hunting,Long> {
+    Page<Hunting> findAllByMember_Num(Integer memberNumber, Pageable pageable);
+    Page<Hunting> findAllByMember_NumAndCompetition_Code(Integer memberNumber, String competitionCode, Pageable pageable);
+    Page<Hunting> findAllByCompetition_Code(String competitionCode, Pageable pageable);
 
-    //Page<Hunting> findAllByMember_NumberAndCompetition_Code(Integer memberNumber, String competitionCode, Pageable pageable);
+    Optional<Hunting> findByMember_NumAndFish_IdAndCompetition_Code(Integer memberNumber, Long fishId, String competitionCode);
+    Boolean existsByMember_NumAndFish_IdAndCompetition_Code(Integer memberNumber, Long fishId, String competitionCode);
+
 }
