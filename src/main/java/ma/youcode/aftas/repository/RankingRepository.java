@@ -12,6 +12,11 @@ import java.util.Optional;
 @Repository
 public interface RankingRepository extends JpaRepository<Ranking, RankId> {
     Optional<Ranking> findByMemberAndCompetition(Member member, Competition competition);
-    Page<Ranking> findAllByMember_NumAndCompetition_Code(Integer memberNumber, String competitionCode, Pageable pageable);
+
+
+
+
     Page<Ranking> findAllByCompetitionCodeOrderByScoreDesc(String competitionCode,Pageable pageable);
+    //    get rankings by Member number order by score des
+
 }

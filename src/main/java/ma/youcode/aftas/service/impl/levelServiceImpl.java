@@ -56,6 +56,11 @@ public class levelServiceImpl implements IlevelService {
         return levelRepository.count();
     }
 
+    @Override
+    public Level getLevelByCode(Integer code) {
+        return levelRepository.findByCode(code).orElseThrow(() -> new ResourceNotFoundException("Level not found"));
+    }
+
     private void canAddLevel(Level level) {
         if (levelRepository.findByCode(level.getCode()).isPresent()) {
             throw new ResourceAlreadyExistsException("Level already exists with this code: " + level.getCode());

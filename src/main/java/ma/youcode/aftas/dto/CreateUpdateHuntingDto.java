@@ -8,8 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor @NoArgsConstructor
 public class CreateUpdateHuntingDto {
-    @NotNull(message = "Number of fish is required")
-    private Integer numberOfFish;
+
 
     @NotNull(message = "Competition ID is required")
     private String competitionCode;

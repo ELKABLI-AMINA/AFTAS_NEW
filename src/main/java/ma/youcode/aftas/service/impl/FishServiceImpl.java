@@ -12,6 +12,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 @Service
@@ -21,13 +22,12 @@ public class FishServiceImpl implements IFishService {
     private final IlevelService levelService;
     @Override
     public Fish save(Fish fish) {
-        if (fish.getLevel() != null) {
-            Level level = levelService.findLevelById(fish.getLevel().getId());
-            fish.setLevel(level);
-        }
 
-        if (fishRepository.findByName(fish.getName()).isPresent()) {
-            throw new ResourceAlreadyExistsException("Fish with name " + fish.getName() + " already exists");
+        Level level = levelService.getLevelByCode(fish.getLevel().getCode());
+        fish.setLevel(level);
+
+        if (findByName(fish.getName()).isPresent()) {
+            throw new ResourceNotFoundException("Fish already exists");
         }
 
         return fishRepository.save(fish);
@@ -35,8 +35,8 @@ public class FishServiceImpl implements IFishService {
 
 
     @Override
-    public Page<Fish> findAll(Pageable pageable) {
-        return fishRepository.findAll(pageable);
+    public List<Fish> findAll(Pageable pageable) {
+        return fishRepository.findAll(pageable).getContent();
     }
 
 
@@ -62,7 +62,10 @@ public class FishServiceImpl implements IFishService {
         return fishRepository.findById(id);
     }
 
-
+    @Override
+    public Long countFishes() {
+        return fishRepository.count();
+    }
 
 
 }

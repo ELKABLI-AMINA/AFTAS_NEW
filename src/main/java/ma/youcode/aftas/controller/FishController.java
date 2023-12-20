@@ -34,8 +34,9 @@ public class FishController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<FishResponseDto>> getAllFish(Pageable pageable) {
+    public ResponseEntity getAllFish(Pageable pageable) {
         return ResponseEntity.ok(fishService.findAll(pageable)
+                .stream()
                 .map(fish -> modelMapper.map(fish, FishResponseDto.class)));
     }
 
@@ -44,5 +45,11 @@ public class FishController {
     public ResponseEntity<Void> deleteFish(@PathVariable Long id) {
         fishService.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/count")
+    public ResponseEntity countFishes(){
+        Long count = fishService.countFishes();
+        return ResponseEntity.ok(count);
     }
 }

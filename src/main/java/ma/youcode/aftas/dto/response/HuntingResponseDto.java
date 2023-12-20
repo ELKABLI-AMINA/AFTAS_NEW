@@ -13,9 +13,7 @@ import ma.youcode.aftas.model.Member;
 
 public class HuntingResponseDto {
     private Long id;
-    private Integer numberOfFish;
     private Fish fish;
-    private Competition competition;
     private Member member;
 
 }

@@ -16,5 +16,6 @@ public interface IlevelService {
     Boolean existsById(Long id);
     Page<Level> findAll(Pageable pageable);
     Long countLevels();
+    Level getLevelByCode(Integer code);
 
 }

@@ -31,9 +31,7 @@ public class HuntingServiceImpl implements IHuntingService {
             throw new InvalidDataException("This member is not signed this competition");
         }
         Ranking ranking = rankingService.findRankingByMemberNumberAndCompetitionCode(huntingDto.getMemberNum(), huntingDto.getCompetitionCode());
-        if(ranking.getCompetition().getDate().equals(LocalDate.now())){
-            throw new InvalidDataException("Competition is not today to start hunting");
-        }
+
         if(ranking.getCompetition().getStartTime().isAfter(LocalTime.now())){
             throw new InvalidDataException("Competition has not started yet still some hours ");
         }
@@ -46,8 +44,7 @@ public class HuntingServiceImpl implements IHuntingService {
         }
         if(existsHuntingByMemberNumberAndFishIdAndCompetitionCode(huntingDto.getMemberNum(),huntingDto.getFishId(),huntingDto.getCompetitionCode())){
             Hunting hunting1 = findHuntingByMemberNumberAndFishIdAndCompetitionCode(huntingDto.getMemberNum(),huntingDto.getFishId(),huntingDto.getCompetitionCode());
-            hunting1.setNomberOfFish(hunting1.getNomberOfFish()+1);
-            ranking.setScore((ranking.getScore() + fish.getLevel().getPoints()));
+            ranking.setScore((ranking.getScore() + 2000));
             rankingService.updateRanking(ranking);
             return  huntingRepository.save(hunting1);
         }else{
@@ -55,9 +52,8 @@ public class HuntingServiceImpl implements IHuntingService {
                     .member(ranking.getMember())
                     .competition(ranking.getCompetition())
                     .fish(fish)
-                    .nomberOfFish(1)
                     .build();
-            ranking.setScore(ranking.getScore() + fish.getLevel().getPoints());
+            ranking.setScore(ranking.getScore() + 2000);
             rankingService.updateRanking(ranking);
             return huntingRepository.save(newHunting);
         }

@@ -14,4 +14,5 @@ public interface IRankingService {
     Ranking updateRanking(Ranking ranking);
     Ranking findRankingByMemberNumberAndCompetitionCode(Integer number, String competitionCode);
     List<Ranking> updateAllRankings(Ranking ranking);
+
 }
