@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.context.request.WebRequest;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Slf4j
@@ -31,6 +33,14 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.CONFLICT)
     public ResponseEntity<ErrorResponse> handleConcurrentUpdateException(ConcurrentUpdateException ex, WebRequest request) {
         return buildErrorResponse(HttpStatus.CONFLICT, ex, "CONCURRENT_UPDATE", request);
+    }
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity notValid(MethodArgumentNotValidException ex, WebRequest request) {
+        List<String> errors = new ArrayList<>();
+        ex.getAllErrors().forEach(err -> errors.add(err.getDefaultMessage()));
+        Map<String, List<String>> result = new HashMap<>();
+        result.put("errors", errors);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
     }
 
     @ExceptionHandler(DatabaseAccessException.class)

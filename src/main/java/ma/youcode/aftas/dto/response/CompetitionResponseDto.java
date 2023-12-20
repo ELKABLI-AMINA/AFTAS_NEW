@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
 
@@ -16,7 +17,7 @@ public class CompetitionResponseDto {
     Long id;
     String code;
 
-    Date date;
+    LocalDate date;
 
     LocalTime  startTime;
 

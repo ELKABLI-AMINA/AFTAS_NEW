@@ -49,6 +49,11 @@ public class LevelController {
         return ResponseEntity.ok(levelService.findAll(pageable)
                 .map(level-> modelMapper.map(level, LevelResponseDto.class)));
     }
+    @GetMapping("/count")
+    public ResponseEntity countLevels(){
+        Long count = levelService.countLevels();
+        return ResponseEntity.ok(count);
+    }
 
 
 }

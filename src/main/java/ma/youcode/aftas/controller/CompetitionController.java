@@ -16,6 +16,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -43,17 +46,31 @@ public class CompetitionController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping
 
-    public ResponseEntity<List<CompetitionResponseDto>> getAllCompetitions(Pageable pageable) {
-        return ResponseEntity.ok( competitionService.findAll(pageable)
-                .stream()
-                .map(competition -> modelMapper.map(competition, CompetitionResponseDto.class)).collect(Collectors.toList()));
-    }
     @GetMapping("/count")
     public ResponseEntity countCompetitions(){
         Long count = competitionService.countCompetitions();
         return ResponseEntity.ok(count);
+
+    }
+    @GetMapping()
+    public ResponseEntity getAllCompetitions( Pageable pageable) {
+        List<Competition> competitions = competitionService.getAllCompetitions(pageable, null);
+        List<CompetitionResponseDto> competitionResponse = competitions.stream()
+                .map(competition -> modelMapper.map(competition, CompetitionResponseDto.class))
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok(competitionResponse);
+
+    }
+    @GetMapping("/today")
+    public ResponseEntity getAllTodayCompetitions( Pageable pageable ) {
+        List<Competition> competitions = competitionService.getAllCompetitions(pageable, LocalDate.now());
+        List<CompetitionResponseDto> competitionResponse = competitions.stream()
+                .map(competition -> modelMapper.map(competition, CompetitionResponseDto.class))
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok(competitionResponse);
 
     }
 

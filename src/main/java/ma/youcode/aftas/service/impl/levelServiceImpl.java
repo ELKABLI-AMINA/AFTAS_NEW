@@ -51,6 +51,11 @@ public class levelServiceImpl implements IlevelService {
         return levelRepository.findAll(pageable);
     }
 
+    @Override
+    public Long countLevels() {
+        return levelRepository.count();
+    }
+
     private void canAddLevel(Level level) {
         if (levelRepository.findByCode(level.getCode()).isPresent()) {
             throw new ResourceAlreadyExistsException("Level already exists with this code: " + level.getCode());

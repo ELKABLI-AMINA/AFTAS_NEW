@@ -18,40 +18,37 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class MemberServiceImpl implements IMemberService {
-    private final MembreRepository membreRepository;
+    private final MembreRepository memberRepository;
     @Override
     public Member save(Member member) {
-        Optional<Member> existingMember = membreRepository.findByNum(member.getNum());
-
-        if (existingMember.isPresent()) {
-            throw new ResourceAlreadyExistsException("Member with the same number already exists");
+        if(memberRepository.findByNum(member.getNum()).isPresent()){
+            throw new ResourceAlreadyExistsException("Member Number already exists");
         }
-        MemberExiste(member);
-        return membreRepository.save(member);
+        return memberRepository.save(member);
     }
 
     @Override
     public Member update(Member member, Integer num) {
-        Member existingMember = membreRepository.findByNum(num)
+        Member existingMember = memberRepository.findByNum(num)
                 .orElseThrow(() -> new ResourceNotFoundException("Membre introuvable avec le numéro " + num));
          if(!existingMember.getNum().equals(member.getNum())){
              throw new ConcurrentUpdateException("A concurrent update was detected. Please try again.");
          }
-         return membreRepository.save(member);
+         return memberRepository.save(member);
     }
 
     @Override
     public List<Member> findAll(Pageable pageable)
     {
-        return membreRepository.findAll(pageable).getContent();
+        return memberRepository.findAll(pageable).getContent();
     }
 
     @Override
     public boolean delete(Integer num) {
-        Optional<Member> memberOptional = membreRepository.findByNum(num);
+        Optional<Member> memberOptional = memberRepository.findByNum(num);
 
         if (memberOptional.isPresent()) {
-            membreRepository.delete(memberOptional.get());
+            memberRepository.delete(memberOptional.get());
             return true;
         } else {
             throw new NoSuchElementException("No member found with number:" + num);
@@ -62,11 +59,16 @@ public class MemberServiceImpl implements IMemberService {
 
     @Override
     public Optional<Member> findByNum(Integer num) {
-        return membreRepository.findByNum(num);
+        return memberRepository.findByNum(num);
+    }
+
+    @Override
+    public Long countMembers() {
+        return memberRepository.count();
     }
 
     private void MemberExiste(Member member) {
-        Optional<Member> existingMember = membreRepository.findByNum(member.getNum());
+        Optional<Member> existingMember = memberRepository.findByNum(member.getNum());
 
         if (existingMember.isPresent()) {
             throw new IllegalArgumentException("Member with the same number already exists");

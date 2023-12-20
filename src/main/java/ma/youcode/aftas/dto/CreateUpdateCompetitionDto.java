@@ -4,6 +4,7 @@ import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -16,13 +17,10 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CreateUpdateCompetitionDto {
-    @NotBlank(message = "Code is required")
-    @Size(max = 255, message = "Code should not exceed 255 characters")
-    String code;
-
     @NotNull(message = "Date is required")
-    @Future(message = "Date should be in the future")
-    Date date;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @FutureOrPresent(message = "Date must be in the present or future")
+    LocalDate date;
 
     @NotNull(message = "Start time is required")
     @FutureOrPresent(message = "Start time should be in the present or future")

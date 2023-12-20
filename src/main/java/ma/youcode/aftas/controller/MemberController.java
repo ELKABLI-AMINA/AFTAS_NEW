@@ -60,4 +60,9 @@ public class MemberController {
             return ResponseEntity.notFound().build();
         }
     }
+    @GetMapping("/count")
+    public ResponseEntity countMembers() {
+        Long count = memberService.countMembers();
+        return ResponseEntity.ok(count);
+    }
 }

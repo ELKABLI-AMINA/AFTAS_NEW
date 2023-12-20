@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +18,7 @@ public interface ICompetitionService {
     Optional<Competition> findById(Long id);
     Boolean existsById(String id);
     Long countCompetitions();
-    List<Competition> getAllCompetitions(Pageable pageable, String search, LocalDate date);
+    List<Competition> getAllCompetitions(Pageable pageable, LocalDate date);
 
 
 
