@@ -22,7 +22,6 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api/competitions")
 @RequiredArgsConstructor
-@Slf4j
 @CrossOrigin("*")
 public class CompetitionController {
     private final ICompetitionService competitionService;
@@ -50,6 +49,12 @@ public class CompetitionController {
         return ResponseEntity.ok( competitionService.findAll(pageable)
                 .stream()
                 .map(competition -> modelMapper.map(competition, CompetitionResponseDto.class)).collect(Collectors.toList()));
+    }
+    @GetMapping("/count")
+    public ResponseEntity countCompetitions(){
+        Long count = competitionService.countCompetitions();
+        return ResponseEntity.ok(count);
+
     }
 
 

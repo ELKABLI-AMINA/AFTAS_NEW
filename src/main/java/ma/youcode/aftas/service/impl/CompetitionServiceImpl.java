@@ -43,5 +43,27 @@ public class CompetitionServiceImpl implements ICompetitionService {
         return competitionRepository.findById(id);
     }
 
+    @Override
+    public Boolean existsById(String id) {
+        return null;
+    }
+
+    @Override
+    public Long countCompetitions() {
+        return competitionRepository.count();
+    }
+
+    @Override
+    public List<Competition> getAllCompetitions(Pageable pageable, String search, LocalDate date) {
+        if(search != null && date != null){
+            return competitionRepository.findAllByCodeContainingOrLocationContainingAndDateEquals(search,search,date,pageable).getContent();
+        } else if(search != null){
+            return competitionRepository.findAllByCodeContainingOrLocationContaining(search,search,pageable).getContent();
+        } else if(date != null){
+            return competitionRepository.findAllByDateEquals(date,pageable).getContent();
+        }
+        return competitionRepository.findAll(pageable).getContent();
+    }
+
 
 }

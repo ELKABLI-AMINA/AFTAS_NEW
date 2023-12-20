@@ -15,6 +15,9 @@ public interface ICompetitionService {
     Page<Competition> findAll(Pageable pageable);
     Optional<Competition> findByCode(String code);
     Optional<Competition> findById(Long id);
+    Boolean existsById(String id);
+    Long countCompetitions();
+    List<Competition> getAllCompetitions(Pageable pageable, String search, LocalDate date);
 
 
 
